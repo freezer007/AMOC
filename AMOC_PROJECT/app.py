@@ -21,11 +21,11 @@ def initialize_database():
 def form_page():
 	return render_template("form.html")
 
-@app.route('/register', methods=['POST'])  # use post we can write ['get','post']
+@app.route('/register', methods=['post'])  # use post we can write ['get','post']
 def register_user():
     email = request.form['email']
     password = request.form['password']
-    User.register(email, password)
+    User.register(email,password)
     return render_template('form.html')
 
 if __name__ == '__main__':

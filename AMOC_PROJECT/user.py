@@ -1,14 +1,14 @@
 import uuid
 import datetime
 from flask import session
-
+from werkzeug.security import generate_pasword_hash, check_password_hash
 from database import Database
 
 
 class User(object):
-    def __init__(self, email, password, _id=None):
+    def __init__(self, email, hash_value, _id=None):
         self.email = email
-        self.password = password
+        self.password = hash_value
         self._id = uuid.uuid4().hex if _id is None else _id
 
     @classmethod
@@ -24,18 +24,19 @@ class User(object):
             return cls(**data)
 
     @staticmethod
-    def login_valid(email, password):  # validate the user
+    def login_valid(email, password, hash_value):  # validate the user
         user = User.get_by_email(email)
         if user is not None:
             # check password
-            return user.password == password
+            return check_password_hash(hash_value, password)
         return False
 
     @classmethod
     def register(cls, email, password):
         user = cls.get_by_email(email)
         if user is None:  # if it is not registered
-            new_user = users(email, password)
+			hash_value = generate_pasword_hash(password)
+            new_user = users(email, hash_value)
             new_user.save_to_mongo()
             session['email'] = email
             return True
