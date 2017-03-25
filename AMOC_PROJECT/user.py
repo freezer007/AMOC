@@ -2,7 +2,7 @@ import uuid
 import datetime
 from flask import session
 
-from common.database import Database
+from database import Database
 
 
 class User(object):
@@ -12,14 +12,14 @@ class User(object):
         self._id = uuid.uuid4().hex if _id is None else _id
 
     @classmethod
-    def get_by_email(cls, email):
+    def get_by_email(users, email):
         data = Database.find_one("users", {"email": email})
         if data is not None:
             return cls(**data)
 
     @classmethod
-    def get_by_id(cls, _id):
-        data = Database.find_one("student", {"_id": _id})
+    def get_by_id(users, _id):
+        data = Database.find_one("users", {"_id": _id})
         if data is not None:
             return cls(**data)
 
@@ -35,7 +35,7 @@ class User(object):
     def register(cls, email, password):
         user = cls.get_by_email(email)
         if user is None:  # if it is not registered
-            new_user = cls(email, password)
+            new_user = users(email, password)
             new_user.save_to_mongo()
             session['email'] = email
             return True

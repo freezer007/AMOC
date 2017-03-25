@@ -12,26 +12,24 @@ app.secret_key = 'secret'
 
 @app.route('/')  # FOR IMPORT USE ALT + IMPORT
 def hello_world():
-    return render_template('login.html')
+    return render_template('register.html')
 
 
 @app.before_first_request
 def initialize_database():
     Database.initialize()
+    # email = 'first@gmail.com'
+    # password = 'first'
+    # User.register(email, password)
 
 
-@app.route('/login', methods=['post'])  # use post we can write ['get','post']
-def login_user():
+@app.route('/register', methods=['post'])  # use post we can write ['get','post']
+def register_user():
     email = request.form['email']
     password = request.form['password']
-
-    if User.login_valid(email, password):
-        User.login(email)
-    else:
-        session['email'] = None
-
-    return render_template("profile.html", email=session['email'])
+    User.register(email, password)
+    return render_template('login.html')
 
 
 if __name__ == '__main__':
-    app.run(port=80)
+    app.run(debug = True)
