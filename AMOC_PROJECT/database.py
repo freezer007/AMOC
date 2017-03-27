@@ -2,7 +2,7 @@ import pymongo
 
 
 class Database(object):
-    URI = "mongodb://open:Open007@ds137110.mlab.com:37110/amoc"
+    URI = "mongodb://user:user@ds137110.mlab.com:37110/amoc"
     DATABASE = None
 
     # def __init__(self):
