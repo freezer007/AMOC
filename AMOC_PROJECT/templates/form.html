@@ -2,15 +2,11 @@
 <html>
 <head>
 	<title>Mentoring Program</title>
-<<<<<<< HEAD
-	<link rel="stylesheet" type="text/css" href="/css/index.css">
-=======
-	<link rel="stylesheet" type="text/css" href="../static/index.css">
->>>>>>> 409ae4dbe02807013125b67c5a57a7a1b271eefe
+	<link rel="stylesheet" type="text/css" href="../static/css/index2.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/index.css">
 	<script type="text/javascript">
 		function validation(){
 			var first_name = document.getElementById("first_name").value;
-			var last_name = document.getElementById("last-name").value;
 			var college_id = document.getElementById("college_id").value;
 			var mobile_no = document.getElementById("mobile_no").value;
 			var hostel_name = document.getElementById("hostel_name").value;
@@ -22,12 +18,6 @@
 			}
 			else{
 				document.getElementById("msg1").innerHTML="";
-			}
-			if(last_name.length==0){
-				document.getElementById("msg2").innerHTML="Enter your last-name";
-			}
-			else{
-				document.getElementById("msg2").innerHTML="";
 			}
 			if(college_id.length==0){
 				document.getElementById("msg3").innerHTML="Enter College-ID";
@@ -73,19 +63,15 @@
 		</div>
 
 		<div class="form">
-			<form accept="image/gif,image/jpeg" method="post">
+			<form accept="image/gif,image/jpeg" autocomplete = "on" method="post">
 			<table id="table_form">
 				<tr>
 					<th colspan="2" style="border-bottom:1px solid black">Form</th>
 				</tr>
 				<tr><td></td></tr>
 				<tr>
-					<td>First-name :</td>
-					<td><span class="spnchoose_file" id="msg1"></span><br><input type="text" id="first_name" class="input_form"></td>
-				</tr>
-				<tr>
-					<td>Last-name :</td>
-					<td><span id="msg2" class="spnchoose_file"></span><br><input type="text" id="last-name" class="input_form"></td>
+					<td>Name :</td>
+					<td><span class="spnchoose_file" id="msg1"></span><br><input type="text" id="first_name" class="input_form" value = {{username|string}}></td>
 				</tr>
 				<tr>
 					<td>College-ID :</td>
@@ -105,7 +91,7 @@
 				</tr><tr><td></td></tr>
 				<tr>
 					<td>Photo :</td>
-					<td><button id="image_upload"><img src="../static/images/profile.png"></button></td>
+					<td><button id="image_upload"><img src="../static/images/profile.png" value = {{photolink|string}}></button></td>
 				</tr>
 			</table><br><br>
 			<input type="submit" class="submit" value="Submit" onclick="return validation();">

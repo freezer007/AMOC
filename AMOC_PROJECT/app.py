@@ -17,9 +17,13 @@ def reg():
 def initialize_database():
     Database.initialize()
 
-@app.route('/form', methods=['GET'])
-def form_page():
-	return render_template("form.html")
+@app.route('/<string:email>/form', methods=['GET'])
+def form_page(email):
+	pages = Database.find_one("users", {"email": email})
+	for page in pages:
+		page_user = [page['email']]
+		page_photo = [page['photolink']]
+	return render_template("form.html", username = page_user, photolink = page_photo)
 
 @app.route('/register', methods=['post'])  # use post we can write ['get','post']
 def register_user():
@@ -27,6 +31,10 @@ def register_user():
     password = request.form['password']
     User.register(email,password)
     return render_template('form.html')
+
+@app.route('/google_login')
+def google_login():
+           return render_template('googlelogin.html')
 
 if __name__ == '__main__':
 	app.run(debug = True)
