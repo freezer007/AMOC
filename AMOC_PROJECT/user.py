@@ -6,9 +6,10 @@ from database import Database
 
 
 class User(object):
-    def __init__(self, email, cid, mob = None, hname = None, rnum = None,photolink = None, _id=None):
+    def __init__(self, email, username, cid, mob = None, hname = None, rnum = None,photolink = None, _id=None):
         self.email = email
         self.password = password
+	self.username = username
 	self.cid = cid
 	self.mob = mob
 	self.hname = hname
@@ -18,6 +19,12 @@ class User(object):
     @classmethod
     def get_by_email(users, email):
         data = Database.find_one("users", {"email": email})
+        if data is not None:
+            return cls(**data)
+
+	@classmethod
+    def get_by_username(users, username):
+        data = Database.find_one("users", {"username": username})
         if data is not None:
             return cls(**data)
 
@@ -70,6 +77,7 @@ class User(object):
             "email": self.email,
             "_id": self._id,
             "password": self.password,
+		"username":self.username
 	    "cid": self.cid,
 	    "mob": self.mob,
 	    "hanme": self.hname,

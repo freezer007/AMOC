@@ -17,11 +17,11 @@ def reg():
 def initialize_database():
     Database.initialize()
 
-@app.route('/<string:email>/form', methods=['GET'])
-def form_page(email):
-	pages = Database.find_one("users", {"email": email})
+@app.route('/<string:username>/form', methods=['GET'])
+def form_page(username):
+	pages = Database.find_one("users", {"username": username})
 	for page in pages:
-		page_user = [page['email']]
+		page_user = [page['username']]
 		page_photo = [page['photolink']]
 	return render_template("form.html", username = page_user, photolink = page_photo)
 
@@ -31,6 +31,11 @@ def register_user():
     password = request.form['password']
     User.register(email,password)
     return render_template('form.html')
+
+@app.route('/<string:username>')
+def login_page(email):
+	
+
 
 @app.route('/google_login')
 def google_login():
