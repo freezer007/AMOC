@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mentoring Program</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/index(updated).css">
+	<script type="text/javascript">
+		function validation(){
+			var name = document.getElementById("name").value;
+			var college_id = document.getElementById("college_id").value;
+			var mobile_no = document.getElementById("mobile_no").value;
+			var hostel_name = document.getElementById("hostel_name").value;
+			var email_id = document.getElementById("email_id").value;
+			var create_password = document.getElementById("create_password").value;
+			var confirm_password = document.getElementById("confirm_password").value;
+			var mobdigit=mobile_no.length;
+			var atpos=email_id.indexOf("@");
+			var dotpos=email_id.lastIndexOf(".");
+
+			if(name.length==0){
+				document.getElementById("msg1").innerHTML="Enter your first-name";
+			}
+			else{
+				document.getElementById("msg1").innerHTML="";
+			}
+			if(college_id.length==0){
+				document.getElementById("msg3").innerHTML="Enter College-ID";
+			}
+			else{
+				document.getElementById("msg3").innerHTML="";
+			}
+			if((mobile_no.length!=10 || isNaN(mobile_no) || mobile_no.length==0 || (mobile_no[0]!=7 && mobile_no[0]!=8 && mobile_no[0]!=9 )) && mobile_no.length!=0){
+				document.getElementById("msg4").innerHTML="Enter Valid Mobile-no.";
+			}
+			else{
+				document.getElementById("msg4").innerHTML="";
+			}
+			if(email_id.length==0 || atpos<1 || dotpos<atpos+2 ||  dotpos+3>email_id.length){
+				document.getElementById("msg6").innerHTML="Enter valid Email-ID";
+			}
+			else{
+				document.getElementById("msg6").innerHTML="";
+			}	
+			if(create_password.length==0){
+				document.getElementById("msg7").innerHTML="Password cannot be null";
+			}
+			else{
+				document.getElementById("msg7").innerHTML="";
+			}	
+			if(confirm_password.length==0 || create_password!=confirm_password){
+				document.getElementById("msg8").innerHTML="Password didn't match";
+			}
+			else{
+				document.getElementById("msg8").innerHTML="";
+			}
+			if(hostel_name.length==0){
+				document.getElementById("msg5").innerHTML="Enter Hostel-name";
+				return false;
+			}
+			else{
+				document.getElementById("msg5").innerHTML="";
+			}		
+			return true;
+		} // end of function..
+		/*function addphoto(){
+			var reader = new FileReader();
+    		reader.onload = function(){
+      		var output = document.getElementById('image');
+      		output.src = reader.result;}
+    		reader.readAsDataURL(document.getElementById('input_image2').files[0]);							
+			//document.getElementById('image').src=image;
+		}	*/
+	</script>
+</head>
+<body>
+	<div class="container" id="container">
+		<div class="header1">
+			<h1>Mentoring Program</h1>
+			<ul class="header_navigation">
+				<li><a href="about.html">ABOUT US</a></li>
+				<li><a href="index.html">HOME</a></li>
+			</ul>
+		</div>
+		<div class="form">
+			<form accept="image/gif,image/jpeg" method="post" >
+			<table id="table_form">
+				<tr>
+					<th colspan="2" style="border-bottom:1px solid black">SIGN UP</th>
+				</tr>
+				<tr><td colspan="2">(<font>*</font>) fields are compulsary</td></tr>
+				<tr>
+					<td>Name<font>*</font> :</td>
+					<td><span class="spnchoose_file" id="msg1"></span><br><input type="text" id="name" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>Email-ID<font>*</font> :</td>
+					<td><span id="msg6" class="spnchoose_file"></span><br><input type="text" id="email_id" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>Create Password<font>*</font> :</td>
+					<td><span id="msg7" class="spnchoose_file"></span><br><input type="password" id="create_password" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>Confirm Password<font>*</font> :</td>
+					<td><span id="msg8" class="spnchoose_file"></span><br><input type="password" id="confirm_password" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>College-ID<font>*</font> :</td>
+					<td><span id="msg3" class="spnchoose_file"></span><br><input type="text" id="college_id" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>Mobile-no. :</td>
+					<td><span id="msg4" class="spnchoose_file"></span><br><input type="text" id="mobile_no" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>Hostel-name<font>*</font> :</td>
+					<td><span id="msg5" class="spnchoose_file"></span><br><input type="text" id="hostel_name" class="input_form"></td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>Photo<font>*</font> :</td>
+					<td><button id="input_image1"><input type="file" id="input_image" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">Get</button>
+
+				
+					<img src="../static/images/profile.png" id="image"></td>
+				</tr>
+			</table><br><br>
+			<input type="submit" class="submit" value="Submit" onclick="return validation();">
+		</form>
+		</div>
+		<div class="footer"></div>
+	</div>
+</body> 
+</html>
