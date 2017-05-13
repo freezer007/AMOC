@@ -2,102 +2,84 @@
 <html>
 <head>
 	<title>Mentoring Program</title>
-	<link rel="stylesheet" type="text/css" href="../static/css/index2.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="../static/index.css">
 	<script type="text/javascript">
 		function validation(){
-			var first_name = document.getElementById("first_name").value;
 			var college_id = document.getElementById("college_id").value;
 			var mobile_no = document.getElementById("mobile_no").value;
 			var hostel_name = document.getElementById("hostel_name").value;
-			var room_no = document.getElementById("room_no").value;
-			var mobdigit=mobile_no.length;
 
-			if(first_name.length==0){
-				document.getElementById("msg1").innerHTML="Enter your first-name";
-			}
-			else{
-				document.getElementById("msg1").innerHTML="";
-			}
 			if(college_id.length==0){
-				document.getElementById("msg3").innerHTML="Enter College-ID";
+				document.getElementById("college_id").innerHTML="Enter College_ID";
 			}
 			else{
-				document.getElementById("msg3").innerHTML="";
+				document.getElementById("college_id").innerHTML="";
 			}
-			if(mobile_no.length==0 || mobdigit!=10){
-				document.getElementById("msg4").innerHTML="Enter Valid Mobile-no.";
+			if((mobile_no.length!=10 || isNaN(mobile_no) || mobile_no.length==0 || (mobile_no[0]!=7 && mobile_no[0]!=8 && mobile_no[0]!=9 )) && mobile_no.length!=0){
+				document.getElementById("mobile_no").innerHTML="Enter Valid Mobile-no.";
 			}
 			else{
-				document.getElementById("msg4").innerHTML="";
+				document.getElementById(mobile_no").innerHTML="";
 			}
 			if(hostel_name.length==0){
-				document.getElementById("msg5").innerHTML="Enter Hostel-name";
+				document.getElementById("hostel_name").innerHTML="Enter Hostel-name";
+				return false;
 			}
 			else{
-				document.getElementById("msg5").innerHTML="";
+				document.getElementById("hostel_name5").innerHTML="";
 			}
-			if(room_no.length==0){
-				document.getElementById("msg6").innerHTML="Enter Room-no";
-			}
-			else{
-				document.getElementById("msg6").innerHTML="";
-			}
-			return false;
+			return true;
 		} // end of function..
-
-		function upload(){
-			var img_url=document.getElementById("upload_image").src;
-			alert(img_url);
-		}
 	</script>
 </head>
 <body>
-	<div class="container">
-		<div class="header">
+	<div class="container" id="container">
+		<div class="header1">
 			<h1>Mentoring Program</h1>
 			<ul class="header_navigation">
-				<li><a href="about.html">About Us</a></li>
-				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">ABOUT US</a></li>
+				<li><a href="index.html">HOME</a></li>
 			</ul>
 		</div>
-
 		<div class="form">
-			<form accept="image/gif,image/jpeg" autocomplete = "on" method="post">
+			<form method="post" action="/logged_in">
 			<table id="table_form">
 				<tr>
-					<th colspan="2" style="border-bottom:1px solid black">Form</th>
+					<th colspan="2">FORM</th>
 				</tr>
-				<tr><td></td></tr>
+				<tr><td colspan="2">(<font>*</font>) fields are compulsory</td></tr>
+				<tr>
+					<td>Photo :</td>
+					<td name="photo">
+					<img src={{photolink}} id="image"></td>
+					<input type="hidden" name="photo" value={{photolink}}>
+				</tr>
 				<tr>
 					<td>Name :</td>
-					<td><span class="spnchoose_file" id="msg1"></span><br><input type="text" id="first_name" class="input_form" value = {{username|string}}></td>
+					<td ><span class="spnchoose_file" id="msg1"></span><br><input name="name" type="text" id="name" class="input_form" value={{name}} readonly></td>
 				</tr>
 				<tr>
-					<td>College-ID :</td>
-					<td><span id="msg3" class="spnchoose_file"></span><br><input type="text" id="college_id" class="input_form"></td>
+					<td>Email-ID :</td>
+					<td ><span id="msg6" class="spnchoose_file"></span><br><input name="email_id" type="text" id="email_id" class="input_form" value={{email}} readonly></td>
+				</tr>
+				<tr>
+					<td>College-ID<font>*</font> :</td>
+					<td ><span id="msg3" class="spnchoose_file"></span><br><input name="college_id" type="text" id="college_id" class="input_form"></td>
 				</tr>
 				<tr>
 					<td>Mobile-no. :</td>
-					<td><span id="msg4" class="spnchoose_file"></span><br><input type="text" id="mobile_no" class="input_form"></td>
+					<td ><span id="msg4" class="spnchoose_file"></span><br><input name="mobile_no" type="text" id="mobile_no" class="input_form"></td>
 				</tr>
 				<tr>
-					<td>Hostel-name :</td>
-					<td><span id="msg5" class="spnchoose_file"></span><br><input type="text" id="hostel_name" class="input_form"></td>
+					<td>Hostel-name<font>*</font> :</td>
+					<td ><span id="msg5" class="spnchoose_file"></span><br><input name="hostel_name" type="text" id="hostel_name" class="input_form"></td>
 				</tr>
-				<tr>
-					<td>Room-no. :</td>
-					<td><span id="msg6" class="spnchoose_file"></span><br><input type="text" id="room_no" class="input_form"></td>
-				</tr><tr><td></td></tr>
-				<tr>
-					<td>Photo :</td>
-					<td><button id="image_upload"><img src="../static/images/profile.png" value = {{photolink|string}}></button></td>
-				</tr>
+				<tr><td></td></tr>
 			</table><br><br>
 			<input type="submit" class="submit" value="Submit" onclick="return validation();">
 		</form>
 		</div>
 		<div class="footer"></div>
 	</div>
-</body>
+</body> 
 </html>

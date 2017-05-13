@@ -2,9 +2,12 @@
 <html>
 <head>
 	<title>Mentoring Program</title>
-	<link rel="stylesheet" type="text/css" href="../static/css/index(updated).css">
+	<link rel="stylesheet" type="text/css" href="../static/index.css">
 </head>
 <body>
+	<script src = "https://plus.google.com/js/client:platform.js" async defer></script>
+    <script src="../static/js/google.js"></script>
+    <script src="../static/js/facebook.js"></script>
 	<div class="container">
 		<div class="header">
 			<h1>Mentoring Program</h1>
@@ -15,11 +18,21 @@
 		</div>
 		<div class="body" id="header">
 			<div class="right_panel">
-				<button class="facebook_button"><img src="../static/images/fb_logo.jpg" id="fb_logo"><span id="login_text">LOGIN WITH FACEBOOK</span></button>&nbsp;&nbsp;
-			<button class="google_button"><img src="../static/images/google_logo.png" id="fb_logo"><span id="login_text">LOGIN WITH GOOGLE</span></button>
+				<button class="facebook_button" onclick="login()"><img src="../static/images/fb_logo.jpg" id="fb_logo"><span id="login_text">LOGIN WITH FACEBOOK</span></button>&nbsp;&nbsp;
+			<button class="g-signin"
+	          	data-scope="email"
+	          	data-clientid="281021402326-d9ccvmfoed5t209lnteb7311p9dudks0.apps.googleusercontent.com"
+	          	data-callback="onSignInCallback"
+	          	data-theme="dark"
+	          	data-cookiepolicy="single_host_origin">
+      		</button>
 
 				<h3>LOGIN</h3>
-
+				<form action="/mylogin" method="post" id="myform">
+	      			<input type="hidden" name="hid1" value="-1">
+	      			<input type="hidden" name="hid2" value="-1">
+	      			<input type="hidden" name="hid3" value="-1">
+      			</form>
 				<input type="text" id="email" placeholder="Email"><br>
 				<input type="password" id="password" placeholder="Password"><br>
 				<button class="login_button">LOG IN</button><br>

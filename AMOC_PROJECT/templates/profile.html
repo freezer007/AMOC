@@ -38,7 +38,7 @@
       </div>
       <div class="modal-body">
       	
-      	<form method="post">
+      	<form method="post" action="/profile_updated">
       		<select name="mentor_subject" style="display:block;margin:auto">
       			<option>Web Development</option>
       			<option>Machine-Learning</option>
@@ -90,15 +90,15 @@
 						<th>{{ post['mob']}}</th>
 					</tr>
 				</table>
-			<form>
+			<form action="/profile_updated" method="post">
 				<p id="name1">Do you want to be mentor ?</p>
 			<select name="mentor_subject" id="select_options">
       			<option>Web Development</option>
-      			<option>Machine-Learning</option>
-      			<option>Competitve Coading</option>
-      			<option>Android Developent</option>
-      			<option>Data-Science</option>
-      			<option>Artificial-Intelligence</option>
+      			<option>Machine Learning</option>
+      			<option>Competitive Coding</option>
+      			<option>Android Development</option>
+      			<option>Data Science</option>
+      			<option>Artificial Intelligence</option>
       		</select><br><br>
       		<input type="submit" value="Submit" id="submit">
       		</form>

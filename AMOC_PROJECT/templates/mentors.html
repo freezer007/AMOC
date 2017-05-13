@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Mentoring Program</title>
-	<link rel="stylesheet" type="text/css" href="../static/css/index2.css">
+	<link rel="stylesheet" type="text/css" href="../static/index2.css">
 </head>
 <body>
 	<div class="container">
@@ -29,15 +29,13 @@
 					<td>9426772815</td>
 					<td>Bhabha-Bhavan</td>
 				</tr>
-				{% for page in pages %}
 				<tr>
-					<td><img src = {{ page['photolink'] }} id = "image"></td>
-					<td> {{ page['username'] }} </td>
-					<td> {{ page['email'] }} </td>
-					<td> {{ page['mob'] }} </td>
-					<td> {{ page['hname'] }} </td>
+					<td><img src="../static/images/profile.png"></td>
+					<td>Karan Dhama</td>
+					<td>vkdhama9@gmail.com</td>
+					<td>9426772815</td>
+					<td>Bhabha-Bhavan</td>
 				</tr>
-				{% endfor %}
 			</table>
 		</div>
 	</div>
