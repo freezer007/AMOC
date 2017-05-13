@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+<head>
+	<meta charset="utf-8">
+	<title>Mentoring-Program</title>
+	<link rel="stylesheet" type="text/css" href="../static/index1.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Mentoring Program</h1>
+			<ul class="header_navigation">
+				<li><a href="/about">ABOUT US</a></li>
+				<li><a href="/first">HOME</a></li>
+			</ul>
+		</div>
+		<div class="main">
+			<div id="sidebar">
+				<ul id="sidebar_ul">
+					<li><img src="../static/images/subject.png" id="icons"><a href="/interestingsubjects">INTERESTING SUBJECTS</a></li>
+					<li id="active"><img src="../static/images/profile.png" id="icons"><a href="#">PROFILE</a></li>
+					<li><img src="../static/images/logout.png" id="icons"><a href="/logged_out" id="icons">LOGOUT</a></li>
+				</ul>
+			</div>
+			<div class="right_panel">
+
+				<!--	 
+			
+
+			<div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select Interesting Subjects</h4>
+      </div>
+      <div class="modal-body">
+      	
+      	<form method="post">
+      		<select name="mentor_subject" style="display:block;margin:auto">
+      			<option>Web Development</option>
+      			<option>Machine-Learning</option>
+      			<option>Competitve Coading</option>
+      			<option>Android Developent</option>
+      			<option>Data-Science</option>
+      			<option>Artificial-Intelligence</option>
+      		</select>
+      		<input type="submit" value="Submit" id="change_button" onclick="return subjects();">
+      		<!--<input type="radio" value="Web Development" id="subjects" name="WD">&nbsp;&nbsp;Web Development<br>
+      		<input type="radio" value="Machine-Learning" id="subjects" name="ML">&nbsp;&nbsp;Machine-Learning<br>
+      		<input type="radio" value="Competitve Coading" id="subjects" name="CC">&nbsp;&nbsp;Competitve Coding<br>
+      		<input type="radio" value="Android Developent" id="subjects" name="AD">&nbsp;&nbsp;Android Developent<br>
+      		<input type="radio" value="Data-Science" id="subjects" name="DS">&nbsp;&nbsp;Data-Science<br>
+      		<input type="radio" value="Artificial-Intelligency" id="subjects" name="AI">&nbsp;&nbsp;Artificial-Intelligence<br>
+      		<input type="submit" value="Submit" id="change_button" onclick="return subjects();">
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+-->
+
+
+				<div id="profile_img">
+					<img src = {{ post['photolink'] }}>
+					<p id="name">{{ post['username'] }}</p>
+				</div>
+				<table id="profile_table">
+					<tr>
+						<th>Name :</th>
+						<th>{{ post['username'] }}</th>
+					</tr>
+					<tr>
+						<th>Email :</th>
+						<th>{{ post['email']}}</th>
+					</tr>
+					<tr>
+						<th>College-ID :</th>
+						<th>{{ post['cid']}}</th>
+					</tr>
+					<tr>
+						<th>Mobile No. :</th>
+						<th>{{ post['mob']}}</th>
+					</tr>
+				</table>
+			<form>
+				<p id="name1">Do you want to be mentor ?</p>
+			<select name="mentor_subject" id="select_options">
+      			<option>Web Development</option>
+      			<option>Machine-Learning</option>
+      			<option>Competitve Coading</option>
+      			<option>Android Developent</option>
+      			<option>Data-Science</option>
+      			<option>Artificial-Intelligence</option>
+      		</select><br><br>
+      		<input type="submit" value="Submit" id="submit">
+      		</form>
+      		
+			</div>		
+		</div>
+
+		<div class="footer">
+		</div>
+	</div>
+</body>
+</head>

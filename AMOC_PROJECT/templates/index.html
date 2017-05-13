@@ -2,29 +2,110 @@
 <html>
 <head>
 	<title>Mentoring Program</title>
-	<link rel="stylesheet" type="text/css" href="/static/index.css">
+	<link rel="stylesheet" type="text/css" href="../static/index.css">
 </head>
 <body>
+    <script src = "https://plus.google.com/js/client:platform.js" async defer></script>
+    <script type="text/javascript">
+  function onSignInCallback(resp) {
+    gapi.client.load('plus', 'v1', apiClientLoaded);
+    document.getElementById("myForm").submit;
+  }
+
+  /**
+   * Sets up an API call after the Google API client loads.
+   */
+  function apiClientLoaded() {
+    gapi.client.plus.people.get({userId: 'me'}).execute(handleEmailResponse);
+  }
+
+  /**
+   * Response callback for when the API client receives a response.
+   *
+   * @param resp The API response object with the user email and profile information.
+   */
+  function handleEmailResponse(resp) {
+    var primaryEmail;
+    for (var i=0; i < resp.emails.length; i++) {
+      if (resp.emails[i].type === 'account') primaryEmail = resp.emails[i].value;
+    }
+    document.getElementById('hid1').value = resp.image.url;
+    document.getElementById('hid2').value = resp.displayName;
+    document.getElementById('hid3').value = primaryEmail;
+	document.getElementById('myform').submit();}
+</script>
+    <script type="text/javascript">
+		// initialize and setup facebook js sdk
+		window.fbAsyncInit = function() {
+		    FB.init({
+		      appId      : '135721630293659',
+		      xfbml      : true,
+		      version    : 'v2.8'
+		    });
+		};
+
+		(function(d, s, id){
+		    var js, fjs = d.getElementsByTagName(s)[0];
+		    if (d.getElementById(id)) {return;}
+		    js = d.createElement(s); js.id = id;
+		    js.src = "//connect.facebook.net/en_US/sdk.js";
+		    fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+		// login with facebook with extra permissions
+		function login() {
+			FB.login(function(response) {
+				if (response.status === 'connected') {
+		    		FB.api('/me', function(response) {
+					document.getElementById('hid1').value = 'https://graph.facebook.com/' + response.id + '/picture';
+					document.getElementById('hid2').value = response.name;
+					document.getElementById('hid3').value = response.email;
+					document.getElementById('myform').submit();
+				});
+		    	}
+			}, {scope: 'email'});
+
+		}
+
+	</script>
 	<div class="container">
 		<div class="header">
 			<h1>Mentoring Program</h1>
 			<ul class="header_navigation">
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Home</a></li>
+				<li><a href="/about">ABOUT US</a></li>
+				<li><a href="#header">HOME</a></li>
 			</ul>
 		</div>
-		<div class="body">
-			<div class="left_panel">
-				<button class="facebook_button"><img src="/static/fb_logo.jpg" id="fb_logo"><span id="login_text">LOGIN WITH FACEBOOK</span></button>&nbsp;&nbsp;
-				<button class="google_button"><img src="/static/google_logo.png" id="fb_logo"><span id="login_text">LOGIN WITH GOOGLE</span></button>
-				<input type="text" id="email" placeholder="Email"><br>
-				<input type="password" id="password" placeholder="Password"><br>
-				<button class="login_button">LOG IN</button><br>
-				<button class="new_user"><a href="#">new user ? </a></button>
-			</div>
+		<div class="body" id="header">
 			<div class="right_panel">
-				<img src="/static/clipart2.jpg" id="clipart">
+				<button class="facebook_button" onclick="login()"><img src="../static/images/fb_logo.jpg" id="fb_logo"><span id="login_text">LOGIN WITH FACEBOOK</span></button>&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<button class="g-signin"
+	          	data-scope="email"
+	          	data-clientid="281021402326-d9ccvmfoed5t209lnteb7311p9dudks0.apps.googleusercontent.com"
+	          	data-callback="onSignInCallback"
+	          	data-theme="dark"
+	          	data-cookiepolicy="single_host_origin">
+      		</button>
+      		<form action="/mylogin" method="post" id="myform" name="myform">
+      			<input type="hidden" name="hid1" id="hid1" value="-1">
+      			<input type="hidden" name="hid2" id="hid2" value="-1">
+      			<input type="hidden" name="hid3" id="hid3" value="-1">
+				<input type="submit" style="color: transparent; background-color: transparent; border-color: transparent; cursor: default;" id="btn" value="submit">
+      		</form>
 			</div>
+			<div class="left_panel">
+				<img src="../static/images/clipart2.jpg" id="clipart">
+			</div>
+			<div class="bottom_panel">
+				<h2>WHAT IS MENTORING ? </h2>
+				<p>Mentorship is a relationship in which a more experienced or more knowledgeable person helps to guide a less experienced or less knowledgeable person. The mentor may be older or younger than the person being mentored, but she or he must have a certain area of expertise. </p>
+				<p>Mentoring is a process for the informal transmission of knowledge, social capital, and the psychosocial support perceived by the recipient as relevant to work, career, or professional development; mentoring entails informal communication, usually face-to-face and during a sustained period of time, between a person who is perceived to have greater relevant knowledge, wisdom, or experience (the mentor) and a person who is perceived to have less.</p>
+				<h2>WHAT THIS SITE ABOUT ?</h2>
+				<p>This site is for mentoring program.Our main goal is that any student of colleges can choose his/her favourite subjects related to Computer-science and can get mentors to get proper guidance in their interesting subjects.</p>
+				<p>Students can <a href="#header">Log-In</a> to website to get registered and then they can meet mentors.</p>
+			</div>
+			<div class="foot"></div>
 		</div>
 	</div>
 </body>

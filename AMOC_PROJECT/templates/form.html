@@ -2,55 +2,84 @@
 <html>
 <head>
 	<title>Mentoring Program</title>
-	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="stylesheet" type="text/css" href="../static/index.css">
+	<script type="text/javascript">
+		function validation(){
+			var college_id = document.getElementById("college_id").value;
+			var mobile_no = document.getElementById("mobile_no").value;
+			var hostel_name = document.getElementById("hostel_name").value;
+
+			if(college_id.length==0){
+				document.getElementById("college_id").innerHTML="Enter College_ID";
+			}
+			else{
+				document.getElementById("college_id").innerHTML="";
+			}
+			if((mobile_no.length!=10 || isNaN(mobile_no) || mobile_no.length==0 || (mobile_no[0]!=7 && mobile_no[0]!=8 && mobile_no[0]!=9 )) && mobile_no.length!=0){
+				document.getElementById("mobile_no").innerHTML="Enter Valid Mobile-no.";
+			}
+			else{
+				document.getElementById(mobile_no").innerHTML="";
+			}
+			if(hostel_name.length==0){
+				document.getElementById("hostel_name").innerHTML="Enter Hostel-name";
+				return false;
+			}
+			else{
+				document.getElementById("hostel_name5").innerHTML="";
+			}
+			return true;
+		} // end of function..
+	</script>
 </head>
 <body>
-	<div class="container">
-		<div class="header">
+	<div class="container" id="container">
+		<div class="header1">
 			<h1>Mentoring Program</h1>
 			<ul class="header_navigation">
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Home</a></li>
+				<li><a href="about.html">ABOUT US</a></li>
+				<li><a href="index.html">HOME</a></li>
 			</ul>
 		</div>
-
 		<div class="form">
+			<form method="post" action="/logged_in">
 			<table id="table_form">
 				<tr>
-					<th colspan="2">Form</th>
+					<th colspan="2">FORM</th>
 				</tr>
-
-				<tr id="odd">
-					<td>First-name :</td>
-					<td><input type="text" name="first-name" id="input_form"></td>
+				<tr><td colspan="2">(<font>*</font>) fields are compulsory</td></tr>
+				<tr>
+					<td>Photo :</td>
+					<td name="photo">
+					<img src={{photolink}} id="image"></td>
+					<input type="hidden" name="photo" value={{photolink}}>
 				</tr>
 				<tr>
-					<td>Last-name :</td>
-					<td><input type="text" name="last-name" id="input_form"></td>
+					<td>Name :</td>
+					<td ><span class="spnchoose_file" id="msg1"></span><br><input name="name" type="text" id="name" class="input_form" value={{name}} readonly></td>
 				</tr>
-				<tr id="odd">
-					<td>College-ID :</td>
-					<td><input type="text" name="college_id" id="input_form"></td>
-				</tr>
-				<!-- <tr>
+				<tr>
 					<td>Email-ID :</td>
-					<td><input type="text" name="email_id" id="input_form"></td>
-				</tr> -->
-				<tr id="odd">
-					<td>Mobile-no. :</td>
-					<td><input type="text" name="mobile_no" id="input_form"></td>
+					<td ><span id="msg6" class="spnchoose_file"></span><br><input name="email_id" type="text" id="email_id" class="input_form" value={{email}} readonly></td>
 				</tr>
 				<tr>
-					<td>Hostel-name :</td>
-					<td><input type="text" name="hostel_name" id="input_form"></td>
+					<td>College-ID<font>*</font> :</td>
+					<td ><span id="msg3" class="spnchoose_file"></span><br><input name="college_id" type="text" id="college_id" class="input_form"></td>
 				</tr>
-				<tr id="odd">
-					<td>Room-no. :</td>
-					<td><input type="text" name="room_no" id="input_form"></td>
+				<tr>
+					<td>Mobile-no. :</td>
+					<td ><span id="msg4" class="spnchoose_file"></span><br><input name="mobile_no" type="text" id="mobile_no" class="input_form"></td>
 				</tr>
-			</table><br>
+				<tr>
+					<td>Hostel-name<font>*</font> :</td>
+					<td ><span id="msg5" class="spnchoose_file"></span><br><input name="hostel_name" type="text" id="hostel_name" class="input_form"></td>
+				</tr>
+				<tr><td></td></tr>
+			</table><br><br>
+			<input type="submit" class="submit" value="Submit" onclick="return validation();">
+		</form>
 		</div>
-
+		<div class="footer"></div>
 	</div>
-</body>
+</body> 
 </html>

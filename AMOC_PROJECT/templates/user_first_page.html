@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+<head>
+	<meta charset="utf-8">
+	<title>Mentoring-Program</title>
+	<link rel="stylesheet" type="text/css" href="../static/index1.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Mentoring Program</h1>
+			<ul class="header_navigation">
+				<li><a href="/about">ABOUT US</a></li>
+				<li><a href="/first">HOME</a></li>
+			</ul>
+		</div>
+		<div class="main">
+			<aside id="sidebar">
+				<ul id="sidebar_ul">
+					<li id="active"><img src="../static/images/subject.png" id="icons"><a href="#">INTERESTING SUBJECTS</a></li>
+					<li><img src="../static/images/profile.png" id="icons"><a href="/profile">PROFILE</a></li>
+					<li><img src="../static/images/logout.png" id="icons"><a href="/logged_out" id="icons">LOGOUT</a></li>
+				</ul>
+			</aside>
+			<div class="subject_images">
+					<p id="welcome">Welcome,  {{ name }}</p>
+					<table id="subjects">
+						<tr>
+							<td><a href="mentors/webdevelopment"><img src="../static/images/webdevelopment.jpg" id="img_subject"></a><br><br>Web Development</td>
+							<td><a href="mentors/machinelearning"><img src="../static/images/machine_learning.jpg" id="img_subject"></a><br><br>Machine Learning</td>
+							<td><a href="mentors/competitivecoding"><img src="../static/images/cc.jpg" id="img_subject"></a><br><br>Competitive Coding</td>
+						</tr>
+						<tr>
+							<td><a href="mentors/androiddevelopment"><img src="../static/images/android.jpg" id="img_subject"></a><br><br>Android Development</td>
+							<td><a href="mentors/datascience"><img src="../static/images/datascience.jpg"id="img_subject" id="img_subject"></a><br><br>Data-Science</td>
+							<td><a href="mentors/artificialintelligence"><img src="../static/images/ai.jpg" id="img_subject"></a><br><br>Artificial Intelligence</td>
+						</tr>
+
+					</table>
+			</div>
+		</div>
+		<div class="footer">
+		</div>
+	</div>
+</body>
+</head>
