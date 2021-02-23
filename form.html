@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mentoring Program</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script type="text/javascript">
+		function validation(){
+			var first_name = document.getElementById("first_name").value;
+			var last_name = document.getElementById("last-name").value;
+			var college_id = document.getElementById("college_id").value;
+			var email_id = document.getElementById("email_id").value;
+			var mobile_no = document.getElementById("mobile_no").value;
+			var hostel_name = document.getElementById("hostel_name").value;
+			var room_no = document.getElementById("room_no").value;
+			alert(room_no);
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Mentoring Program</h1>
+			<ul class="header_navigation">
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Home</a></li>
+			</ul>
+		</div>
+
+		<div class="form">
+			<table id="table_form">
+				<tr>
+					<th colspan="2" style="border-bottom:1px solid black">Form</th>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>First-name :</td>
+					<td><input type="text" id="first_name" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>Last-name :</td>
+					<td><input type="text" id="last-name" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>College-ID :</td>
+					<td><input type="text" id="college_id" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>Email-ID :</td>
+					<td><input type="text" id="email_id" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>Mobile-no. :</td>
+					<td><input type="text" id="mobile_no" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>Hostel-name :</td>
+					<td><input type="text" id="hostel_name" class="input_form"></td>
+				</tr>
+				<tr>
+					<td>Room-no. :</td>
+					<td><input type="text" id="room_no" class="input_form"></td>
+				</tr><tr><td></td></tr>
+				<tr>
+					<td>Photo :</td>
+					<td class="choose_file"><span>Choose File</span><input type="file" name="select_file"></td>
+				</tr>
+			</table><br><br>
+			<button class="submit" onclick="validation();">Submit</button>
+		</div>
+		<div class="footer"></div>
+	</div>
+</body> 
+</html>
